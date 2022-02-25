@@ -1,5 +1,2 @@
-all: chess game
-chess: chess_game.c
+all:
 	gcc -Wall -Werror -o chess chess_game.c
-game:
-./chess
