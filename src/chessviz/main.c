@@ -4,11 +4,7 @@
 #define BOARD_SIZE 8
 #define N 6
 
-//#include <libchessviz/coordinates.c>
-//#include <libchessviz/print_chess_board.c>
-//#include <libchessviz/pawn_move.c>
-//#include <libchessviz/move.c>
-#include "libchessviz/functions.h"
+#include <libchessviz/functions.h>
 
 int main()
 {
