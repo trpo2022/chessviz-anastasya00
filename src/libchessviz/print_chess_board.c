@@ -1,6 +1,5 @@
 #include <stdio.h>
 #define BOARD_SIZE 8
-#include "libchessviz/functions.h"
 
 void print_chess_board(char (*chess_board)[BOARD_SIZE], int board_size)
 {

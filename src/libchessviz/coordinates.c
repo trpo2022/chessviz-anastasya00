@@ -1,4 +1,3 @@
-#include "libchessviz/functions.h"
 #include <stdio.h>
 
 int coordX(char x)

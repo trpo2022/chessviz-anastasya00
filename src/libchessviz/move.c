@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define BOARD_SIZE 8
-#include "libchessviz/functions.h"
 
 void move(
         char (*chess_board)[BOARD_SIZE],
