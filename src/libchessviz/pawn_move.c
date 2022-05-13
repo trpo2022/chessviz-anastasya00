@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define BOARD_SIZE 8
+#include "move.c"
 
 int pawn_move(
         char (*chess_board)[BOARD_SIZE],
