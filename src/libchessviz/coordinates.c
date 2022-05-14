@@ -24,7 +24,7 @@ int coordX(char x)
     case 'g':
         x = 6;
         break;
-    case 'j':
+    case 'h':
         x = 7;
         break;
     default:
