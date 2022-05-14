@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define BOARD_SIZE 8
 
-int pawn_move(char (*chess_board)[BOARD_SIZE], int board_size, int number_move, int x1, int y1, int x2, int y2)
+int pawn_move(char (*chess_board)[BOARD_SIZE], int number_move, int x1, int y1, int x2, int y2)
 {
     if (x1 == x2 && y1 == y2) {
         printf("Вы не походили!");
@@ -16,7 +16,7 @@ int pawn_move(char (*chess_board)[BOARD_SIZE], int board_size, int number_move, 
                 || (y1 == y2 && x1 <= x2)) {
                 printf("Такой ход сделать нельзя.\n");
             } else {
-                move(chess_board, BOARD_SIZE, x1, y1, x2, y2);
+                move(chess_board, x1, y1, x2, y2);
             }
         }
 
@@ -25,7 +25,7 @@ int pawn_move(char (*chess_board)[BOARD_SIZE], int board_size, int number_move, 
                 || (y1 == y2 && x1 < x2)) {
                 printf("Такой ход сделать нельзя.\n");
             } else {
-                move(chess_board, BOARD_SIZE, x1, y1, x2, y2);
+                move(chess_board, x1, y1, x2, y2);
             }
         }
         number_move++;
@@ -37,7 +37,7 @@ int pawn_move(char (*chess_board)[BOARD_SIZE], int board_size, int number_move, 
                 || (abs(y1 - y2) > 1 && abs(x2 - x1) > 1)) {
                 printf("Такой ход сделать нельзя.\n");
             } else {
-                move(chess_board, BOARD_SIZE, x1, y1, x2, y2);
+                move(chess_board, x1, y1, x2, y2);
             }
         }
 
@@ -46,7 +46,7 @@ int pawn_move(char (*chess_board)[BOARD_SIZE], int board_size, int number_move, 
                 || (abs(y1 - y2) > 1 && abs(x2 - x1) > 1)) {
                 printf("Такой ход сделать нельзя.\n");
             } else {
-                move(chess_board, BOARD_SIZE, x1, y1, x2, y2);
+                move(chess_board, x1, y1, x2, y2);
             }
         }
         number_move++;
