@@ -94,4 +94,4 @@ CTEST(ctest, writel6)
     const int expected = -1;
 
     ASSERT_EQUAL(expected, result);
-*/}
+}

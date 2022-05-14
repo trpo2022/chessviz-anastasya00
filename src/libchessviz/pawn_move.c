@@ -57,5 +57,5 @@ int pawn_move(
         }
         number_move++;
     }
-	return 0;
+    return 0;
 }
