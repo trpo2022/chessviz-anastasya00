@@ -10,7 +10,7 @@ CTEST(ctest, writel)
 	char *command = "Qd1xd3#";
 
 	const int result = coordX(command[1]);
-	const int expected1 = 3;
+	const int expected = 3;
 
 	ASSERT_EQUAL(expected, result);
 }
