@@ -11,7 +11,7 @@ void print_chess_board(char (*chess_board)[BOARD_SIZE], int board_size)
         }
         printf("\n");
     }
-    printf("  a b c d e f g j\n");
+    printf("  a b c d e f g h\n");
 
     printf("\n\n");
 }
