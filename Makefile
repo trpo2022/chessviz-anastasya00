@@ -1,34 +1,48 @@
-APP_NAME = main
-LIB_NAME = libchessviz
-SOURCE=src/chessviz/
-LIBSOURCE=src/libchessviz/
-OBJLIB=obj/src/libchessviz/
-OBJCHESS=obj/src/chessviz/
+.PHONY: clean bin/main
+CFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -MMD
 
-CC = gcc -c
-CFLAGS = -Wall -Werror
-INCLUDEPATH = -I src
+bin/main: obj/src/chessviz/main.o obj/src/libchessviz/libchessviz.a
+	gcc $(CFLAGS) -o $@ $^
 
-all: bin/chessviz
+bin/test: obj/test/main.o obj/src/libchessviz/libchessviz.a
+	gcc $(CFLAGS) -o $@ $^
 
-obj/src/libchessviz/coordinates.o: $(LIBSOURCE)coordinates.c
-	$(CC) $(INCLUDEPATH) $< -o $@
-obj/src/libchessviz/print_chess_board.o: $(LIBSOURCE)print_chess_board.c
-	$(CC) $(INCLUDEPATH) $< -o $@
-obj/src/libchessviz/move.o: $(LIBSOURCE)move.c
-	$(CC) $(INCLUDEPATH) $< -o $@
-obj/src/libchessviz/pawn_move.o: $(LIBSOURCE)pawn_move.c
-	$(CC) $(INCLUDEPATH) $< -o $@
-obj/src/chessviz/main.o: $(SOURCE)main.c
-	$(CC) $(INCLUDEPATH) $< -o $@
 
-obj/src/libchessviz/libchessviz.a: $(OBJLIB)coordinates.o $(OBJLIB)print_chess_board.o $(OBJLIB)move.o $(OBJLIB)pawn_move.o
-	ar rcs $@ $^
+obj/src/libchessviz/libchessviz.a: obj/src/libchessviz/print_chess_board.o obj/src/libchessviz/coordinates.o obj/src/libchessviz/move.o obj/src/libchessviz/pawn_move.o obj/test/test.o
+	ar src $@ $^
 
-bin/chessviz: $(OBJCHESS)main.o $(OBJLIB)libchessviz.a 
-	gcc $(CFLAGS) $(INCLUDEPATH) $^ -o $@
-run:
-	./bin/chessviz
+obj/src/libchessviz/print_chess_board.o: src/libchessviz/print_chess_board.c
+	gcc -c $(CFLAGS) $(CPPFLAGS) -I src/ -o $@ src/libchessviz/print_chess_board.c
+
+obj/src/libchessviz/coordinates.o:  src/libchessviz/coordinates.c
+	gcc -c $(CFLAGS) $(CPPFLAGS) -I src/ -o $@ src/libchessviz/coordinates.c
+
+obj/src/libchessviz/move.o: src/libchessviz/move.c
+	gcc -c $(CFLAGS) $(CPPFLAGS) -I src/ -o $@ src/libchessviz/move.c
+
+obj/src/libchessviz/pawn_move.o: src/libchessviz/pawn_move.c
+	gcc -c $(CFLAGS) $(CPPFLAGS) -I src/ -o $@ src/libchessviz/pawn_move.c
+
+obj/src/chessviz/main.o: src/chessviz/main.c
+	gcc -c $(CFLAGS) $(CPPFLAGS) -I src/ -o $@ src/chessviz/main.c
+
+
+obj/test/test.o: test/test.c
+	gcc -c $(CFLAGS) $(CPPFLAGS) -I src/ -o $@ $<
+
+obj/test/main.o: test/main.c
+	gcc -c $(CFLAGS) $(CPPFLAGS) -I src/ -o $@ $<
+
+run/main:
+	./bin/main
+
+run/test:
+	./bin/test
+
 clean:
-	rm -f $(OBJLIB)*.[oa]
-	rm -f $(OBJCHESS)*.o
+	rm obj/src/chessviz/.o
+	rm obj/src/libchessviz/.o
+	rm obj/src/chessviz/.d
+	rm obj/src/libchessviz/.d
+	rm obj/test/.o obj/test/.d

@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <libchessviz/coordinates.h>
-#include <libchessviz/pawn_move.h>
+#include <libchessviz/funktions.h>
+#define BOARD_SIZE 8
 
 CTEST(ctest, writel)
 {
@@ -68,7 +68,7 @@ CTEST(ctest, writel6)
 				  {'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'}};
 
 	char *command = "Ph2xh2#";
-	int numbe_mover = 1;
+	int number = 1;
 
 	if(strlen(command) == 5) {
 		x1 = coordX(command[0]);
@@ -89,7 +89,7 @@ CTEST(ctest, writel6)
 		y2 = coordY(command[5]);
 	}
 
-	const int result = pawn_move(chess_board, 8, number, x1, y1, x2, y2);
+	const int result = pawn_move(chess_board, BOARD_SIZE, number, x1, y1, x2, y2);
 	const int expected = -1;
 
 	ASSERT_EQUAL(expected, result);
