@@ -1,3 +1,4 @@
+#include "function.h"
 #include <stdio.h>
 
 int coordX(char x)

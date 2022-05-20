@@ -55,11 +55,11 @@ int main()
         }
 
         if (chess_board[x1][y1] == 'P' || chess_board[x1][y1] == 'p') {
-            pawn_move(chess_board, BOARD_SIZE, number_move, x1, y1, x2, y2);
+            pawn_move(chess_board, number_move, x1, y1, x2, y2);
         }
 
         else {
-            move(chess_board, BOARD_SIZE, x1, y1, x2, y2);
+            move(chess_board, x1, y1, x2, y2);
         }
         print_chess_board(chess_board, BOARD_SIZE);
     }

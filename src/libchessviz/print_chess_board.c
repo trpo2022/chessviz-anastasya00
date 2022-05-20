@@ -1,3 +1,4 @@
+#include "function.h"
 #include <stdio.h>
 #define BOARD_SIZE 8
 

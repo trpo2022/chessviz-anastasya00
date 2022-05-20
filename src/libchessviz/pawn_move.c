@@ -1,4 +1,4 @@
-#include <libchessviz/move.c>
+#include "function.h"
 #include <stdio.h>
 #include <stdlib.h>
 #define BOARD_SIZE 8

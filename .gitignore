@@ -1,5 +1,4 @@
 *.o
 *.d
 *.a
-*chessviz
-main
+*main
